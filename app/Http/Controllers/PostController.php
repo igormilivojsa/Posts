@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->get();
 
         return view('home', compact('posts'));
     }
@@ -32,7 +32,7 @@ class PostController extends Controller
 
     public function show($id)
     {
-        //
+        return view('post');
     }
 
 

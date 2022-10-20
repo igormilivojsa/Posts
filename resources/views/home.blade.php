@@ -8,7 +8,8 @@
     @else
         @include('layout.guest-navigation')
     @endif
-    <div class="container">
+    
+    <div class="container mt-5">
         @include('posts.posts')
     </div>
 @endsection

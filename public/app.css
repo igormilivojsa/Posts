@@ -1,8 +1,17 @@
 #post-image {
-    max-width: auto;
-    max-height: 300px;
+    max-width: 100%;
+    height: auto;
 }
 
-p {
-    background-color: azure;
+#post-video {
+    max-width: 100%;
+    height: auto;
+}
+
+#post {
+    max-width: 500px;
+}
+
+div#form {
+    max-width: 600px;
 }
