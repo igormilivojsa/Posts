@@ -30,9 +30,11 @@ class PostController extends Controller
     }
 
 
-    public function show($id)
+    public function show(Post $post)
     {
-        return view('post');
+        Post::find($post);
+
+        return view('posts.post', compact('post'));
     }
 
 

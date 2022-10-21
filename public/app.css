@@ -1,11 +1,13 @@
 #post-image {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
 }
 
 #post-video {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+}
+
+img#post-image {
+    width: 100%
 }
 
 #post {
