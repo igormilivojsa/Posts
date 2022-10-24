@@ -24,11 +24,23 @@
         </div>
         <hr>
         Comments:
+            <form class="mt-4" method="POST" action="{{route('comments.store')}}">
+                <div class="form-floating">
+                    <textarea class="form-control" maxlength="23" placeholder="Leave a comment here" id="comment-body"></textarea>
+                    <label for="floatingTextarea">Add comment</label>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-secondary-outline" type="submit">Add</button>
+                </div>
+            </form>
         <div>
-            @dd($post->comment)
-{{--            @foreach($post->comments as comment)--}}
-{{--                $comment->body--}}
-{{--            @endforeach--}}
+            @foreach($post->comments as $comment)
+                <div class="border mb-4">
+                    <p>
+                        {{$comment->body}}
+                    </p>
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection

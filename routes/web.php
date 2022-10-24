@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::resource('/posts', PostController::class);
+Route::resource('/comments', CommentController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

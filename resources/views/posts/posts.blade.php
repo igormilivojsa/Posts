@@ -18,7 +18,7 @@
             <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
                 <button type="button" class="btn btn-sm btn-outline-secondary"></button>
-                <a href="posts/{{ $post->id }}" class="btn btn-outline">vise</a>
+                <a href="posts/{{ $post->id }}" class="btn btn-outline-secondary">vise</a>
             </div>
             <small class="text-muted"><p>By <b>{{ $post->user->name }}</b> {{ $post->created_at->diffForHumans() }}</p></small>
         </div>

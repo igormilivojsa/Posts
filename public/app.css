@@ -17,3 +17,7 @@ img#post-image {
 div#form {
     max-width: 600px;
 }
+
+#comment-body{
+    resize: none
+}
