@@ -27,7 +27,7 @@ class PostRequest extends FormRequest
         return [
             'body' => 'required|min:3',
             'user_id' => 'required',
-            'file' => 'required',
+            'file' => '',
         ];
     }
 

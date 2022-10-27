@@ -9,7 +9,7 @@
             <textarea required class="form-control" id="body" name="body" rows="3"></textarea>
             
             <div class="input-group mb-3">
-                <input required type="file" class="form-control mt-3" name="file" id="input">
+                <input type="file" class="form-control mt-3" name="file" id="input">
             </div>
         </div>  
         

@@ -15,6 +15,10 @@
                 $("#add-btn").click(function(){
                     $("form#form").toggle();
                 });
+                
+                $("#logout-li").click(function (){
+                    $("#logout").submit();
+                });
             });
         </script>
     </header>

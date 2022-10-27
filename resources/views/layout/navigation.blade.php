@@ -20,15 +20,23 @@
                 <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
             </form>
             
-            <div class="text-end">
-                
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-outline-light me-2">
-                            {{ Auth::user()->name }}
-                        </button>
-                    </form>
-                
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ Auth::user()->name }}
+                </button>
+                <ul class="dropdown-menu">
+                    <li id="logout-li" class="dropdown-item">
+                        <form id="logout" method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            logout
+                        </form>
+                    </li>
+                    <li class="dropdown-item">
+                        <a class="link" href="#">
+                            Another action
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

@@ -34,6 +34,7 @@ class CommentRequest extends FormRequest
     {
         $this->merge([
             'user_id' => auth()->id(),
+            'post_id' => $this->route('post')->id,
         ]);
     }
 }

@@ -1,13 +1,11 @@
 #post-image {
     width: 100%;
+    height: 300px;
 }
 
 #post-video {
     width: 100%;
-}
-
-img#post-image {
-    width: 100%
+    height: 300px;
 }
 
 #post {

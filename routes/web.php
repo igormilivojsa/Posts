@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource('/posts', PostController::class);
-Route::resource('/comments', CommentController::class);
+Route::resource('posts/{post}/comments', CommentController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
