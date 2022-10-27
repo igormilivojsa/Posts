@@ -14,6 +14,13 @@ class Post extends Model
 
     protected $guarded = [];
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, fn($query, $search) =>
+        $query
+            ->where('body', 'like', '%' . $search . '%'));
+    }
+
     public function setFileAttribute($value)
     {
         $this->attributes['file'] = Storage::disk('public')->put('images', $value);

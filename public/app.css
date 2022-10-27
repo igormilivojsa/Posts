@@ -19,3 +19,7 @@ div#form {
 #comment-body{
     resize: none
 }
+
+#users-list {
+    max-width: 800px;
+}

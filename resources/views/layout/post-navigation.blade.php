@@ -16,6 +16,15 @@
                 </li>
             </ul>
             
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="GET" action="#">
+                <input type="text"
+                       name="search"
+                       placeholder="Search..."
+                       class="form-control form-control-dark"
+                       value="{{ request('search') }}"
+                >
+            </form>
+            
             <div class="btn-group">
                 <button type="button" class="btn btn-outline dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     {{ Auth::user()->name }}

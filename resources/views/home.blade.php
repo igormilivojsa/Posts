@@ -3,7 +3,7 @@
 
 @section('content')
     @if(Auth::user())
-        @include('layout.navigation')
+        @include('layout.post-navigation')
         @include('posts.form')
     @else
         @include('layout.guest-navigation')
