@@ -4,10 +4,19 @@
     
     @include('layout.navigation')
     
+    <form method="GET" action="#">
+        <input type="text"
+               id="user-search"
+               name="user-search"
+               placeholder="Search user"
+               class="form-control"
+               value="{{ request('user-search') }}"
+        >
+    </form>
+
     @foreach ($users as $user)
-        <a class="text-dark text-decoration-none" href="/users/{{ $user->id }}">
+        <a class="text-dark text-decoration-none " href="/users/{{ $user->id }}">
             <div id="users-list" class="container mb-2 mt-3">
-    
                 <div class="row col-md-9 col-md-pull-3">
                     <section class="search-result-item">
                         <div class="col search-result-item-body">

@@ -22,7 +22,7 @@
             });
         </script>
     </header>
-    <body>
+    <body class="container">
         @yield('content')
     </body>
 </html>

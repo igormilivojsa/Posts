@@ -52,4 +52,10 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function scopeUserFilter($query, array $filters)
+    {
+        $query->when($filters['user-search'] ?? false, fn($query, $user_search) =>
+        $query
+            ->where('name', 'like', '%' . $user_search . '%'));
+    }
 }

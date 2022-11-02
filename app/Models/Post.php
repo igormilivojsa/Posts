@@ -14,7 +14,7 @@ class Post extends Model
 
     protected $guarded = [];
 
-    public function scopeFilter($query, array $filters)
+    public function scopePostFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, fn($query, $search) =>
         $query
