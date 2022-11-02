@@ -2,7 +2,6 @@
 
 @section('content')
     @include('layout.navigation')
-
         <section id="profile">
             <div style="background-color: #faf9f9" class="container pb-4 py-5 border">
                 <div class="row">
@@ -40,44 +39,59 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card mb-4 mb-lg-0">
+                            <div class="card">
+                                <div class="card-body">
+                                    Follows
+                                    @foreach($user->follows as $follow)
+                                        <div class="row">
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{ $follow->name }}</p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
                     <div class="col-lg-8">
                         <div class="row">
                             <div class="col-md-12">
                                 @if($user->posts !== null)
                                     @foreach($user->posts as $post)
-                                    <div id="post" class="container mb-3 border border-1">
-                                        @if (pathinfo($post->file, PATHINFO_EXTENSION) === 'mp4')
-                                            <video id="post-video" class="mt-3 mb-2" controls>
-                                                <source src="{{ asset('storage/' . $post->file) }}" type="video/mp4">
-                                                <source src="{{ asset('storage/' . $post->file) }}" type="video/ogg">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        
-                                            <div class="container">
-                                                <p id="kamen">{{ $post->body }}</p>
+                                        <div id="post" class="container mb-3 border border-1">
+                                            @if (pathinfo($post->file, PATHINFO_EXTENSION) === 'mp4')
+                                                <video id="post-video" class="mt-3 mb-2" controls>
+                                                    <source src="{{ asset('storage/' . $post->file) }}" type="video/mp4">
+                                                    <source src="{{ asset('storage/' . $post->file) }}" type="video/ogg">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            
+                                                <div class="container">
+                                                    <p id="kamen">{{ $post->body }}</p>
+                                                </div>
+                                            @elseif ($post->file == null)
+                                                <div class="container">
+                                                    <p id="kamen">{{ $post->body }}</p>
+                                                </div>
+                                            @else
+                                                <img class="mt-3 mb-2" id="post-image" src="{{ asset('storage/' . $post->file) }}" alt="">
+                                            
+                                                <div class="container">
+                                                    <p id="kamen">{{ $post->body }}</p>
+                                                </div>
+                                            @endif
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group mb-2">
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary"></button>
+                                                    <a href="posts/{{ $post->id }}" class="btn btn-outline-secondary">vise</a>
+                                                </div>
+                                                <small class="text-muted"><p>By <b>{{ $post->user->name }}</b> {{ $post->created_at->diffForHumans() }}</p></small>
                                             </div>
-                                        @elseif ($post->file == null)
-                                            <div class="container">
-                                                <p id="kamen">{{ $post->body }}</p>
-                                            </div>
-                                        @else
-                                            <img class="mt-3 mb-2" id="post-image" src="{{ asset('storage/' . $post->file) }}" alt="">
-                                        
-                                            <div class="container">
-                                                <p id="kamen">{{ $post->body }}</p>
-                                            </div>
-                                        @endif
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group mb-2">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary"></button>
-                                                <a href="posts/{{ $post->id }}" class="btn btn-outline-secondary">vise</a>
-                                            </div>
-                                            <small class="text-muted"><p>By <b>{{ $post->user->name }}</b> {{ $post->created_at->diffForHumans() }}</p></small>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
                                 @else
                                     User dont have any posts
                                 @endif
