@@ -24,7 +24,8 @@
                                 <div class="col-sm-9 border">
                                     <div class="row">
                                         <div class="col-sm-2">
-                                            <img id="prifile-image" src="" alt="#">
+                                            {{--<img src="" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">--}}
+                                            <img class="" id="profile-image" src="" alt="#">
                                         </div>
                                         <div class="col-sm-10">
                                             <h4 class="search-result-item-heading">

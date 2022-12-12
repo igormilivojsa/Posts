@@ -8,12 +8,22 @@
                     <div class="col-lg-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                                     class="rounded-circle img-fluid" style="width: 150px;">
+                                @if($user->avatar == null)
+                                    <ion-avatar>
+                                        <img id="avatar" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                                    </ion-avatar>
+                                @else
+                                    <img src="{{ asset('storage/' . $user->avatar) }}" alt="avatar"
+                                        class="img-fluid" style="width: 300px;">
+                                @endif
                                 <h5 class="my-3">{{ $user->name }}</h5>
-                                <div class="d-flex justify-content-center mb-2">
-                                    <button type="button" class="btn btn-primary">Follow</button>
-                                </div>
+                                
+                                @if(auth()->id() !== $user->id)
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <button type="submit" onclick="follow({{ $user->id }})"  class="btn btn-primary">Follow</button>
+                                        
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <div class="card mb-4 mb-lg-0">
@@ -39,6 +49,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="text-center mt-3 mb-3">
+                            <a href="/users/{{ $user->id }}/edit" class="btn btn-secondary col-2 ">Edit</a>
+                        </div>
                         <div class="card mb-4 mb-lg-0">
                             <div class="card">
                                 <div class="card-body">
@@ -46,7 +59,7 @@
                                     @foreach($user->follows as $follow)
                                         <div class="row">
                                             <div class="col-sm-9">
-                                                <p class="text-muted mb-0">{{ $follow->name }}</p>
+                                                <a href="/users/{{ $follow->id }}"><p class="text-muted mb-0">{{ $follow->name }}</p></a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -86,14 +99,14 @@
                                                 <div class="btn-group mb-2">
                                                     <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
                                                     <button type="button" class="btn btn-sm btn-outline-secondary"></button>
-                                                    <a href="posts/{{ $post->id }}" class="btn btn-outline-secondary">vise</a>
+                                                    <a href="/posts/{{ $post->id }}" class="btn btn-outline-secondary">vise</a>
                                                 </div>
                                                 <small class="text-muted"><p>By <b>{{ $post->user->name }}</b> {{ $post->created_at->diffForHumans() }}</p></small>
                                             </div>
                                         </div>
                                     @endforeach
                                 @else
-                                    User dont have any posts
+                                    User don't have any posts
                                 @endif
                             </div>
                         </div>

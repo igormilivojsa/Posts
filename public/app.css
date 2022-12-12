@@ -28,6 +28,16 @@ div#form {
 
 #user-search {
     margin-left: 440px;
-    margin-R: 440px;
+    margin-right: 440px;
     width: 400px;
 }
+
+img#avatar {
+    width: 300px;
+}
+
+button.btn.btn-primary.text-bottom {
+    margin-top: 160px;
+}
+
+
