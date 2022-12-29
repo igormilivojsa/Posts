@@ -6,6 +6,7 @@
     @else
         @include('layout.guest-navigation')
     @endif
+    
     <div id="post" class="container mb-3 border border-1 shadow">
         @if (pathinfo($post->file, PATHINFO_EXTENSION) === 'mp4')
             <video id="post-video" class="mt-3 mb-2" controls>
@@ -23,8 +24,9 @@
         </div>
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
-                <button type="button" class="btn btn-sm btn-outline-secondary"></button>
+                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-up"></i></button>
+                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-down"></i></button>
+
             </div>
             <small class="text-muted"><p>By <b>{{ $post->user->name }}</b> {{ $post->created_at->diffForHumans() }}</p></small>
         </div>

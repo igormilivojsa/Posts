@@ -4,7 +4,7 @@
     @include('layout.navigation')
     
     <div class="container bootstrap snippets bootdey">
-        <h1 class="text-primary">Edit Profile</h1>
+        <h1>Edit Profile</h1>
         <hr>
         <form action="{{ route('users.update', ['user' => $user->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-primary text-bottom" type="submit">Submit</button>
+                        <button class="btn btn-secondary text-bottom" type="submit">Submit</button>
                     </div>
                 </div>
             </div>

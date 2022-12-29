@@ -8,12 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Post;
 use App\Models\Comment;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Followable;
+    use HasApiTokens, HasFactory, Notifiable, Followable, SoftDeletes;
 
     protected $guarded = [];
 
@@ -34,6 +35,11 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 
     public function setAvatarAttribute($value)

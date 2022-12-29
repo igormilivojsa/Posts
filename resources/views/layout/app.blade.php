@@ -31,8 +31,12 @@
                 $.ajax({
                     type:'POST',
                     url:'/users/'+ user_id +'/follow',
-                    success:function() {
-                        console.log('kamen');
+                    success:function(response) {
+                        if (!response) {
+                            $("#follow").text("Follow")
+                        } else {
+                            $("#follow").text("Unfollow")
+                        }
                     }
                 });
             }

@@ -6,12 +6,15 @@ use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->postfilter(request(['search']))->get();
+        $posts = Post::whereHas('user', function (Builder $query) {
+            $query->whereNull('deleted_at');
+        })->latest()->postfilter(request(['search']))->get();
 
         return view('home', compact('posts'));
     }

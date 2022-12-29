@@ -8,29 +8,33 @@
             </video>
         
             <div class="container">
-                <p id="kamen">{{ $post->body }}</p>
+                <p >{{ $post->body }}</p>
             </div>
+        
         @elseif ($post->file == null)
             <div class="container">
                 <p id="kamen">{{ $post->body }}</p>
             </div>
         @else
             <img class="mt-3 mb-2" id="post-image" src="{{ asset('storage/' . $post->file) }}" alt="">
-        
             <div class="container">
                 <p id="kamen">{{ $post->body }}</p>
             </div>
         @endif
-        
-        
-    
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group mb-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
-                <button type="button" class="btn btn-sm btn-outline-secondary"></button>
-                <a href="posts/{{ $post->id }}" class="btn btn-outline-secondary">vise</a>
+                @dd($post->likes)
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <i class="bi bi-hand-thumbs-up"></i>{{ $post->liked ?: 0}}
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <i class="bi bi-hand-thumbs-down"></i>{{ $post->disliked ?: 0}}
+                </button>
+                <a href="posts/{{ $post->id }}" class="btn btn-outline-secondary">
+                    <i class="bi bi-three-dots"></i>
+                </a>
             </div>
-            <small class="text-muted"><p>By <b>{{ $post->user->name }}</b> {{ $post->created_at->diffForHumans() }}</p></small>
+                <small class="text-muted"><p>By <b>{{ $post->user->name }}</b> {{ $post->created_at->diffForHumans() }}</p></small>
         </div>
     </div>
 @endforeach

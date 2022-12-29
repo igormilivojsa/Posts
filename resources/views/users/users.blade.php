@@ -3,16 +3,6 @@
 @section('content')
     
     @include('layout.navigation')
-    
-    <form method="GET" action="#">
-        <input type="text"
-               id="user-search"
-               name="user-search"
-               placeholder="Search user"
-               class="form-control"
-               value="{{ request('user-search') }}"
-        >
-    </form>
 
     @foreach ($users as $user)
         <a class="text-dark text-decoration-none " href="/users/{{ $user->id }}">
@@ -23,14 +13,22 @@
                             <div class="row">
                                 <div class="col-sm-9 border">
                                     <div class="row">
-                                        <div class="col-sm-2">
-                                            {{--<img src="" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">--}}
-                                            <img class="" id="profile-image" src="" alt="#">
+                                        <div class="col-2">
+                                            @if($user->avatar == null)
+                                                <ion-avatar>
+                                                    <img style="width: 70px;" id="avatar"  alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                                                </ion-avatar>
+                                            @else
+                                                <img src="{{ asset('storage/' . $user->avatar) }}" alt="avatar" style="width: 70px;">
+                                            @endif
                                         </div>
-                                        <div class="col-sm-10">
-                                            <h4 class="search-result-item-heading">
+                                        <div class="col-10 ml-2">
+                                            <h4>
                                                 {{ $user->name }}
-                                            </h4><p class="info">{{ $user->email }}</p>
+                                            </h4>
+                                            <p>
+                                                {{ $user->email }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

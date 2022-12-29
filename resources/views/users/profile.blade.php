@@ -1,3 +1,4 @@
+@php use App\Models\User; @endphp
 @extends('layout.app')
 
 @section('content')
@@ -20,8 +21,7 @@
                                 
                                 @if(auth()->id() !== $user->id)
                                     <div class="d-flex justify-content-center mb-2">
-                                        <button type="submit" onclick="follow({{ $user->id }})"  class="btn btn-primary">Follow</button>
-                                        
+                                        <button type="submit" id="follow" onclick="follow({{ $user->id }})"  class="btn btn-secondary">{{ $user->isFollowing() ? 'Unfollow' : 'Follow' }}</button>
                                     </div>
                                 @endif
                             </div>
@@ -50,7 +50,9 @@
                             </div>
                         </div>
                         <div class="text-center mt-3 mb-3">
-                            <a href="/users/{{ $user->id }}/edit" class="btn btn-secondary col-2 ">Edit</a>
+                            @if( auth()->id() == $user->id)
+                                <a href="/users/{{ $user->id }}/edit" class="btn btn-secondary col-2 ">Edit</a>
+                            @endif
                         </div>
                         <div class="card mb-4 mb-lg-0">
                             <div class="card">
@@ -82,24 +84,24 @@
                                                 </video>
                                             
                                                 <div class="container">
-                                                    <p id="kamen">{{ $post->body }}</p>
+                                                    <p >{{ $post->body }}</p>
                                                 </div>
                                             @elseif ($post->file == null)
                                                 <div class="container">
-                                                    <p id="kamen">{{ $post->body }}</p>
+                                                    <p >{{ $post->body }}</p>
                                                 </div>
                                             @else
                                                 <img class="mt-3 mb-2" id="post-image" src="{{ asset('storage/' . $post->file) }}" alt="">
                                             
                                                 <div class="container">
-                                                    <p id="kamen">{{ $post->body }}</p>
+                                                    <p>{{ $post->body }}</p>
                                                 </div>
                                             @endif
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group mb-2">
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary"></button>
-                                                    <a href="/posts/{{ $post->id }}" class="btn btn-outline-secondary">vise</a>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-up"></i></button>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-down"></i></button>
+                                                    <a href="/posts/{{ $post->id }}" class="btn btn-outline-secondary"><i class="bi bi-three-dots"></i></a>
                                                 </div>
                                                 <small class="text-muted"><p>By <b>{{ $post->user->name }}</b> {{ $post->created_at->diffForHumans() }}</p></small>
                                             </div>
