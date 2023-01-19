@@ -99,8 +99,6 @@
                                             @endif
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group mb-2">
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-up"></i></button>
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-down"></i></button>
                                                     <a href="/posts/{{ $post->id }}" class="btn btn-outline-secondary"><i class="bi bi-three-dots"></i></a>
                                                 </div>
                                                 <small class="text-muted"><p>By <b>{{ $post->user->name }}</b> {{ $post->created_at->diffForHumans() }}</p></small>

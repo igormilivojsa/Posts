@@ -14,7 +14,7 @@ class PostController extends Controller
     {
         $posts = Post::whereHas('user', function (Builder $query) {
             $query->whereNull('deleted_at');
-        })->latest()->postfilter(request(['search']))->get();
+        })->withLikes()->latest()->postfilter(request(['search']))->get();
 
         return view('home', compact('posts'));
     }

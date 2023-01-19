@@ -40,6 +40,15 @@
                     }
                 });
             }
+            function like(post_id) {
+                $.ajax({
+                    type:'POST',
+                    url:'posts/'+post_id+'/like',
+                    success:function(response) {
+                        //
+                    }
+                })
+            }
         </script>
     </header>
     <body class="container">

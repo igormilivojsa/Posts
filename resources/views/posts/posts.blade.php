@@ -23,13 +23,9 @@
         @endif
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group mb-2">
-                @dd($post->likes)
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                    <i class="bi bi-hand-thumbs-up"></i>{{ $post->liked ?: 0}}
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                    <i class="bi bi-hand-thumbs-down"></i>{{ $post->disliked ?: 0}}
-                </button>
+                @auth()
+                    @include('like-buttons')
+                @endauth
                 <a href="posts/{{ $post->id }}" class="btn btn-outline-secondary">
                     <i class="bi bi-three-dots"></i>
                 </a>
@@ -38,3 +34,6 @@
         </div>
     </div>
 @endforeach
+{{--<button type="button" class="btn btn-sm btn-outline-secondary">--}}
+{{--    <i class="bi bi-hand-thumbs-down"></i>{{ $post->dislikes}}--}}
+{{--</button>--}}
